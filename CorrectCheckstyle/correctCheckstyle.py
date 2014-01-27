@@ -12,21 +12,21 @@ class CorrectCheckstyleCommand(sublime_plugin.TextCommand):
 				result = re.search('java:(.*):', i)
 				pos = result.group(1)
 				line = int(re.search('(.*):', pos).group(1)) - 2
-				col = int(re.search(':(.*)', pos).group(1)) + 6
+				col = int(re.search(':(.*)', pos).group(1))# + 6
 				self.view.erase(edit, Region(self.view.text_point(line, col), self.view.text_point(line, col + 1)))
 				print("corrected:      " + i)
 			elif "is not followed by whitespace" in i:
 				result = re.search('java:(.*):', i)
 				pos = result.group(1)
 				line = int(re.search('(.*):', pos).group(1)) - 2
-				col = int(re.search(':(.*)', pos).group(1)) + 25
+				col = int(re.search(':(.*)', pos).group(1))# + 25
 				self.view.insert(edit, self.view.text_point(line, col), " ")
 				print("corrected:      " + i)
 			elif "is not preceded with whitespace" in i:
 				result = re.search('java:(.*):', i)
 				pos = result.group(1)
 				line = int(re.search('(.*):', pos).group(1)) - 2
-				col = int(re.search(':(.*)', pos).group(1)) + 25
+				col = int(re.search(':(.*)', pos).group(1))# + 25
 				self.view.insert(edit, self.view.text_point(line, col), " ")
 				print("corrected:      " + i)
 			else:
@@ -34,6 +34,7 @@ class CorrectCheckstyleCommand(sublime_plugin.TextCommand):
 
 	def run(self, edit):
 		if not self.view.is_dirty():
+			print("This may not work if your code uses tab characters!!!!!!!!!!!!!")
 			path = self.view.file_name()
 			command = r"java -jar E:\\Users\Steven\Documents\GaTech\CS1332\checkstyle-5.6\checkstyle-5.6-all.jar -c E:\\Users\Steven\Documents\GaTech\CS1332\checkstyle-5.6\CS1332-checkstyle.xml " + "\"" + path + "\""
 			try:
