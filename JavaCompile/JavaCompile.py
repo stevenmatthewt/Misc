@@ -9,7 +9,7 @@ class JavaCompileCommand(sublime_plugin.TextCommand):
 		try:
 			os.chdir(path[:-len(name)])
 			output = check_output(command, stderr=subprocess.STDOUT)
-		except Exception as e:
+		except subprocess.CalledProcessError as e:
 			output = e.output
 		output =  output.decode('utf-8')
 		print(output)
