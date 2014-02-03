@@ -5,7 +5,9 @@ class CheckstyleCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
 		if not self.view.is_dirty():
 			path = self.view.file_name()
-			command = r"java -jar E:\\Users\Steven\Documents\GaTech\CS1332\checkstyle-5.6\checkstyle-5.6-all.jar -c E:\\Users\Steven\Documents\GaTech\CS1332\checkstyle-5.6\CS1332-checkstyle.xml " + "\"" + path + "\""
+			pathToCheckstyle = sublime.packages_path()
+			#command = r"java -jar E:\\Users\Steven\Documents\GaTech\CS1332\checkstyle-5.6\checkstyle-5.6-all.jar -c E:\\Users\Steven\Documents\GaTech\CS1332\checkstyle-5.6\CS1332-checkstyle.xml " + "\"" + path + "\""
+			command = "java -jar \"" + pathToCheckstyle + "\CheckStyle\checkstyle-5.6\checkstyle-5.6-all.jar\" -c  \"" + pathToCheckstyle + "\CheckStyle\checkstyle-5.6\CS1332-checkstyle.xml\" \"" + path + "\""
 			print(command)
 			try:
 				output = check_output(command)
