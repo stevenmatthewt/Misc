@@ -1,6 +1,0 @@
-1. Unzip the tar file
-2. Paste the CS1332-checkstyle.xml file inside the checkstyle folder
-3. Run command
-	java -jar checkstyle-5.6-all.jar -c CS1332-checkstyle.xml /path/to/javafiles/
-
-	Ex. java -jar checkstyle-5.6-all.jar -c CS1332-checkstyle.xml eclipse/workspace/src/*.java
