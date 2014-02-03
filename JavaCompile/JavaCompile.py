@@ -8,7 +8,7 @@ class JavaCompileCommand(sublime_plugin.TextCommand):
 		command = (r"javac " + name)#"cd /d " + path[:-len(name)] + " & " + r"java " + name)
 		try:
 			os.chdir(path[:-len(name)])
-			output = check_output(command, stderr=subprocess.STDOUT)
+			output = subprocess.check_output(command, stderr=subprocess.STDOUT)
 		except subprocess.CalledProcessError as e:
 			output = e.output
 		output =  output.decode('utf-8')
