@@ -7,7 +7,6 @@ class JavaRunCommand(sublime_plugin.TextCommand):
 		name = re.search(r"(([^\\]+)$)", path).group(1)
 		command = (r"java " + name)#"cd /d " + path[:-len(name)] + " & " + r"java " + name)
 		command = command[:-5]
-		print(command)
 		try:
 			os.chdir(path[:-len(name)])
 			sts = Popen(command).wait()	#seems to work well!
